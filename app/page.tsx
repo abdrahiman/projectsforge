@@ -28,7 +28,7 @@ export default function Home() {
           </Link>
         ))}
       </main>
-      <aside className="filter text-sm">
+      <aside className="filter text-sm gap-2 flex flex-col">
         <div className="filter">
         <h3 className="font-semibold text-lg">Status</h3>
         <div className="flex gap-2">

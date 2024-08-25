@@ -56,7 +56,7 @@ article.markdown {
 	 margin-top: 0;
 	 margin-bottom: 0.75em;
 }
- article.markdown h1 {
+article.markdown h1 {
 	 font-size: 1.875rem;
 	 margin-top: 1.875rem;
 }
@@ -173,8 +173,14 @@ article.markdown {
 	 margin-block-start: 0.6em;
 	 margin-block-end: 0.6em;
 }
+
+
  article.markdown li > ol:first-child, article.markdown li > ul:first-child {
 	 margin-block-start: 0.6em;
+}
+
+article.markdown li > ol, article.markdown li >ul{
+	
 }
  article.markdown ul > li {
 	 list-style: disc;

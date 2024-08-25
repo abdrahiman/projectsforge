@@ -15,9 +15,14 @@ export default async function Problem() {
   return (
     <div className="flex pt-4 w-full justify-between items-start gap-6 max-md:flex-col">
       <main className="problem flex flex-col gap-2 w-full bg-[#ffe] rounded-xl p-2">
-          <Link className="pb-2 text-md underline" href="/">back</Link>
-        <header>
-          <h2 className="text-3xl font-bold mt-0">💪 Challenge: {problem.title}</h2>
+        <div className="flex gap-1 w-full justify-between items-center pr-4 pb-4 pt-2">
+          <Link className="text-md underline" href="/">back</Link>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="min-w-fit"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        </div>
+        <header className="flex gap-2 w-full justify-start items-center pr-4">
+          <input type="checkbox" title="solved" className="w-7 h-7"/>
+          <h2 className="text-2xl font-bold mt-0">💪 Challenge bl bla bla: {problem.title}</h2>
         </header>
         <article className="flex flex-col markdown">
           <Markdown>{md}</Markdown>
@@ -35,7 +40,7 @@ export default async function Problem() {
         </h5>
         <div className="resources mt-6">
           <h4 className="font-bold text-xl">📙 Resources</h4>
-          <ul className="max-w-full overflow-hidden ">
+          <ul className="max-w-full overflow-hidden mt-2">
             <li><a href="https://www.youtube.com/watch?v=V9QO1azHiFQ&list=PL_b0ZzhDK1Z_eYdfyZfl0-NoY9qEw0yVa">{"https://www.youtube.com/watch?v=V9QO1azHiFQ&list=PL_b0ZzhDK1Z_eYdfyZfl0-NoY9qEw0yVa".slice(0,25)+"..."}
             </a>
             </li>
