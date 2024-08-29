@@ -13,7 +13,9 @@ export let getChallenges = async (filters: any) => {
   let q = query(collection(db, "challenges"));
   if (filters.domain)
     q = query(q, where("domains", "array-contains", filters.domain));
-  if (filters.difficulty)
+  if (Array.isArray(filters.difficulty))
+    q = query(q, where("difficulty", "in", filters.difficulty));
+  else if (filters.difficulty)
     q = query(q, where("difficulty", "==", filters.difficulty));
   const querySnapshot = await getDocs(q);
   let challenges: {}[] = [];
@@ -68,7 +70,6 @@ export let createChallenge = async (ch: IChallenge) => {
 };
 
 export let setSolved = (id: string) => {
-  if (window == undefined) return null;
   // let docRef = doc(db, "challenges", id);
   // await updateDoc(docRef, {
   //   solved_by: increment(1)
@@ -85,7 +86,6 @@ export let setSolved = (id: string) => {
   localStorage.setItem("solved", JSON.stringify(solved));
 };
 export let getSolved = () => {
-  if (window == undefined) return [];
   let solved: any = localStorage.getItem("solved");
   if (solved) return JSON.parse(solved);
   else return [];
