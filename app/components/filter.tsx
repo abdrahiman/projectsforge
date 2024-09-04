@@ -30,7 +30,7 @@ export let Filter = ({ domains }: { domains: string[] }) => {
           <input
             type="checkbox"
             name=""
-            value={diff.includes("easy")}
+            checked={diff.includes("easy")}
             id=""
             onChange={() =>
               diff.includes("easy")
@@ -45,7 +45,7 @@ export let Filter = ({ domains }: { domains: string[] }) => {
             type="checkbox"
             name=""
             id=""
-            value={diff.includes("medium")}
+            checked={diff.includes("medium")}
             onChange={() =>
               diff.includes("medium")
                 ? setDiff([...diff.filter((e) => e != "medium")])
@@ -59,7 +59,7 @@ export let Filter = ({ domains }: { domains: string[] }) => {
             type="checkbox"
             name=""
             id=""
-            value={diff.includes("hard")}
+            checked={diff.includes("hard")}
             onChange={() =>
               diff.includes("hard")
                 ? setDiff([...diff.filter((e) => e != "hard")])

@@ -12,7 +12,6 @@ export default async function Problem({ params }: { params: { id: string } }) {
   return (
     <div className="flex pt-4 w-full justify-between items-start gap-6 max-md:flex-col">
       <main className="problem flex flex-col relative gap-2 w-full bg-[#ffe] rounded-xl p-2 pt-3 overflow-hidden">
-   
         <div className="flex gap-1 w-full justify-between items-center pr-4 pb-4 pt-2">
           <Link className="text-md underline" href="/">
             back
@@ -41,7 +40,10 @@ export default async function Problem({ params }: { params: { id: string } }) {
       </main>
       <section className="flex flex-col gap-2 pt-6 text-sm">
         <h5 className="">
-          َAuthor: <a href={'https://github.com/'+challenge?.author_username}><b className="">Abdrahimo</b></a>
+          َAuthor:{" "}
+          <a href={"https://github.com/" + challenge?.author_username}>
+            <b className="">Abdrahimo</b>
+          </a>
         </h5>
         <h5 className="">
           Difculty: <b className="text-green-800">{challenge?.difficulty}</b>
@@ -52,8 +54,8 @@ export default async function Problem({ params }: { params: { id: string } }) {
         <div className="resources mt-6">
           <h4 className="font-bold text-xl">📙 Resources</h4>
           <ul className="max-w-full overflow-hidden mt-2">
-            {challenge?.resources?.map((r: string) => (
-              <li>
+            {challenge?.resources?.map((r: string, i: number) => (
+              <li key={i}>
                 <a href={r}>{r.slice(0, 25) + "..."}</a>
               </li>
             ))}

@@ -55,7 +55,7 @@ export interface IChallenge {
   solved_by: number;
 }
 
-export let createChallenge = async (ch: IChallenge) => {
+export let createChallenge = async (ch: any) => {
   let newdoc = await addDoc(collection(db, "challenges"), {
     name: ch.name,
     author_username: ch.author_username,
@@ -69,6 +69,7 @@ export let createChallenge = async (ch: IChallenge) => {
   });
   return newdoc.id;
 };
+
 export let editeChallenge = async (id: string, ch: any) => {
   let dc = await updateDoc(doc(db, "challenges", id), {
     name: ch.name,

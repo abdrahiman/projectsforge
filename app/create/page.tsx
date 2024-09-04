@@ -1,7 +1,7 @@
 import { createChallenge } from "../utils/challenges";
 
 export default async function Create() {
-  let creatChallenge = async (formData: FormData) => {
+  let makeChallenge = async (formData: FormData) => {
     "use server";
     let name = formData.get("name") as string;
     let preview = formData.get("preview") as string;
@@ -45,7 +45,7 @@ export default async function Create() {
   };
   return (
     <div className="flex pt-4 w-full justify-between items-start gap-6 max-md:flex-col">
-      <form className="flex flex-col gap-4 mx-auto" action={creatChallenge}>
+      <form className="flex flex-col gap-4 mx-auto" action={makeChallenge}>
         <div className="flex flex-col gap-2">
           <label>Challenge Name:</label>
           <input type="text" name="name" />

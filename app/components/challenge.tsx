@@ -10,7 +10,7 @@ export let Challenge = ({ ch }: { ch: IChallenge }) => {
   }, [setSolve]);
 
   return (
-    <Link href={"/" + ch.id} key={ch.id}>
+    <Link href={"/" + ch.id}>
       <div className="prob p-4 flex bg-[#ffe] items-center justify-between rounded-md w-full">
         <div className="info flex flex-col w-full">
           <h3 className="text-md">{ch.name}</h3>

@@ -14,7 +14,7 @@ export default async function Home({ searchParams }: any) {
     <div className="flex gap-4 w-full items-start">
       <main className="problems w-full flex gap-2 flex-col">
         {challenges.map((ch: any) => (
-          <Challenge ch={ch} />
+          <Challenge key={ch.id} ch={ch} />
         ))}
       </main>
       <Filter domains={domains} />
