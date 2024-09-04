@@ -1,4 +1,3 @@
-import Markdown from "react-markdown";
 import Link from "next/link";
 import { getChallenge } from "../utils/challenges";
 import { Header } from "../components/header";
@@ -12,7 +11,7 @@ export default async function Problem({ params }: { params: { id: string } }) {
 
   let res = await fetch(challenge?.github_markdown_file || "");
   let md = await res.text();
-  let htmlText = marked.parse(md||"", { gfm: true });
+  let htmlText = marked.parse(md || "", { gfm: true });
 
   return (
     <div className="flex pt-4 w-full justify-between items-start gap-6 max-md:flex-col">
