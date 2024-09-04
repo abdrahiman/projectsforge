@@ -2,6 +2,9 @@ import { editeChallenge, getChallenge } from "../../utils/challenges";
 
 export default async function Update({ params }: { params: { id: string } }) {
   let ch = await getChallenge(params.id);
+  if (!ch || !ch.name) {
+    return <h1>This Challenge Not Found</h1>;
+  }
 
   let updateChallenge = async (formData: FormData) => {
     "use server";
@@ -55,7 +58,7 @@ export default async function Update({ params }: { params: { id: string } }) {
         </div>
         <div className="flex flex-col gap-2">
           <label>Challenge Description:</label>
-          <textarea type="text" name="preview" defaultValue={ch?.preview} />
+          <textarea name="preview" defaultValue={ch?.preview} />
         </div>
         <div className="flex flex-col gap-2">
           <label>Github UserName:</label>
@@ -83,14 +86,14 @@ export default async function Update({ params }: { params: { id: string } }) {
         </div>
         <div>
           <label>Resources:</label>
-          <textarea name="resources" defaultValue={ch?.resources.join(",")} />
+          <textarea name="resources" defaultValue={ch?.resources?.join(",")} />
         </div>
         <div>
           <label>Domains:</label>
           <input
             type="text"
             name="domains"
-            defaultValue={ch?.domains.join(",")}
+            defaultValue={ch?.domains?.join(",")}
           />
         </div>
         <div>
