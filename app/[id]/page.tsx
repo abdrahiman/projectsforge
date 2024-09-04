@@ -35,7 +35,7 @@ export default async function Problem({ params }: { params: { id: string } }) {
         </div>
         <Header challenge={challenge} params={params} />
         <article className="flex flex-col markdown">
-          <Markdown>{md}</Markdown>
+          <Markdown>{md||""}</Markdown>
         </article>
       </main>
       <section className="flex flex-col gap-2 pt-6 text-sm">
