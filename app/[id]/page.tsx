@@ -2,6 +2,7 @@ import Markdown from "react-markdown";
 import Link from "next/link";
 import { getChallenge } from "../utils/challenges";
 import { Header } from "../components/header";
+import { marked } from "marked";
 
 export default async function Problem({ params }: { params: { id: string } }) {
   const challenge = await getChallenge(params.id);
@@ -11,6 +12,7 @@ export default async function Problem({ params }: { params: { id: string } }) {
 
   let res = await fetch(challenge?.github_markdown_file || "");
   let md = await res.text();
+  let htmlText = marked.parse(md||"", { gfm: true });
 
   return (
     <div className="flex pt-4 w-full justify-between items-start gap-6 max-md:flex-col">
@@ -37,9 +39,10 @@ export default async function Problem({ params }: { params: { id: string } }) {
           </button>
         </div>
         <Header challenge={challenge} params={params} />
-        <article className="flex flex-col markdown">
-          <Markdown>{md || ""}</Markdown>
-        </article>
+        <article
+          className="flex flex-col markdown"
+          dangerouslySetInnerHTML={{ __html: htmlText }}
+        ></article>
       </main>
       <section className="flex flex-col gap-2 pt-6 text-sm">
         <h5 className="">
