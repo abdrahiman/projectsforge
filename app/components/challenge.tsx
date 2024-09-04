@@ -1,9 +1,14 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getSolved, IChallenge } from "../utils/challenges";
 
 export let Challenge = ({ ch }: { ch: IChallenge }) => {
+  let [solved, setSolve] = useState(false);
+  useEffect(() => {
+    setSolve(getSolved().includes(ch.id));
+  }, [setSolve]);
+
   return (
     <Link href={"/" + ch.id} key={ch.id}>
       <div className="prob p-4 flex bg-[#ffe] items-center justify-between rounded-md w-full">
@@ -31,11 +36,11 @@ export let Challenge = ({ ch }: { ch: IChallenge }) => {
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
           </button>
-          {/* <button
-            className={`rounded-xl p-2 min-w-fit text-sm ${getSolved().includes(ch.id) ? "bg-green-500 text-white" : "border-2 border-green-500 text-green-500"}`}
+          <button
+            className={`rounded-xl p-2 min-w-fit text-sm ${solved ? "bg-green-500 text-white" : "border-2 border-green-500 text-green-500"}`}
           >
-            {getSolved().includes(ch.id) ? "Solved" : "Solve Challenge"}
-          </button> */}
+            {solved ? "Solved" : "Solve Challenge"}
+          </button>
         </div>
       </div>
     </Link>

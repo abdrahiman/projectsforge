@@ -41,7 +41,7 @@ export default async function Problem({ params }: { params: { id: string } }) {
       </main>
       <section className="flex flex-col gap-2 pt-6 text-sm">
         <h5 className="">
-          َAuthor: <b className="">Abdrahimo</b>
+          َAuthor: <a href={'https://github.com/'+challenge?.author_username}><b className="">Abdrahimo</b></a>
         </h5>
         <h5 className="">
           Difculty: <b className="text-green-800">{challenge?.difficulty}</b>

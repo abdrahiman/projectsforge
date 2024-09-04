@@ -2,6 +2,7 @@ import {
   collection,
   getDocs,
   getDoc,
+  updateDoc,
   doc,
   addDoc,
   query,
@@ -67,6 +68,20 @@ export let createChallenge = async (ch: IChallenge) => {
     solved_by: 0,
   });
   return newdoc.id;
+};
+export let editeChallenge = async (id: string, ch: any) => {
+  let dc = await updateDoc(doc(db, "challenges", id), {
+    name: ch.name,
+    author_username: ch.author_username,
+    preview: ch.preview,
+    github_markdown_file: ch.github_markdown_file,
+    github_markdown_name: ch.github_markdown_name,
+    difficulty: ch.difficulty,
+    resources: ch.resources,
+    domains: ch.domains,
+  });
+  console.log({ dc });
+  return dc;
 };
 
 export let setSolved = (id: string) => {

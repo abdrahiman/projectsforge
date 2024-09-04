@@ -19,7 +19,10 @@ export let Header = ({ challenge, params }: any) => {
         title="solved"
         checked={solved}
         className="w-7 h-7"
-        onChange={() => (setSolved(params.id), setSolve(!solved))}
+        onChange={() => {
+          setSolved(params.id);
+          setSolve(!solved);
+        }}
       />
       <h2 className="text-2xl font-bold mt-0">
         💪 Challenge: {challenge?.name}
