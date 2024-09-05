@@ -78,7 +78,9 @@ export default async function Create() {
           <label>Difficulty:</label>
           <input type="text" name="difficulty" />
         </div>
-        <button>Create</button>
+        <button className="bg-green-600 text-white w-full mt-4 py-4 px-2 rounded-md">
+          Create
+        </button>
       </form>
     </div>
   );

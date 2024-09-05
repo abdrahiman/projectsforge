@@ -24,9 +24,9 @@ export let Header = ({ challenge, params }: any) => {
           setSolve(!solved);
         }}
       />
-      <h2 className="text-2xl font-bold mt-0">
+      <h1 className="text-2xl font-bold mt-0">
         💪 Challenge: {challenge?.name}
-      </h2>
+      </h1>
     </header>
   );
 };

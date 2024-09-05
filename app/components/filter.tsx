@@ -12,8 +12,8 @@ export let Filter = ({ domains }: { domains: string[] }) => {
     }
   }, [diff, setDiff]);
   return (
-    <aside className="filter text-sm gap-2 flex flex-col">
-      <div className="filter">
+    <aside className="filter text-base gap-2 flex flex-col w-fit min-w-[16rem]">
+      {/* <div className="filter">
         <h3 className="font-semibold text-lg">Status</h3>
         <div className="flex gap-2">
           <input type="checkbox" name="" id="" />
@@ -23,9 +23,9 @@ export let Filter = ({ domains }: { domains: string[] }) => {
           <input type="checkbox" name="" id="" />
           <label htmlFor="">Unsolved</label>
         </div>
-      </div>
-      <div className="filter">
-        <h3 className="font-semibold text-lg">Difficulty</h3>
+      </div> */}
+      <h3 className="font-semibold text-lg">Difficulty</h3>
+      <div className="filter bg-[#ddf] rounded-md p-2 flex gap-2 flex-col">
         <div className="flex gap-2">
           <input
             type="checkbox"
@@ -69,8 +69,8 @@ export let Filter = ({ domains }: { domains: string[] }) => {
           <label htmlFor="">Hard</label>
         </div>
       </div>
-      <div className="filter">
-        <h3 className="font-semibold text-lg">Domains</h3>
+      <h3 className="font-semibold text-lg">Categories</h3>
+      <div className="filter bg-[#ddf] rounded-md p-2 flex gap-2 flex-col">
         {domains &&
           domains.map((d, i) => (
             <div className="flex gap-2" key={i}>

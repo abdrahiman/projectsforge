@@ -100,7 +100,9 @@ export default async function Update({ params }: { params: { id: string } }) {
           <label>Difficulty:</label>
           <input type="text" name="difficulty" defaultValue={ch?.difficulty} />
         </div>
-        <button>Update</button>
+        <button className="bg-green-600 text-white w-full mt-4 py-4 px-2 rounded-md">
+          Update
+        </button>
       </form>
     </div>
   );
