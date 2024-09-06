@@ -9,15 +9,11 @@ export let Nav = () => {
           className="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8"
         ></ul>
         <div className="order-0">
-          <a className="navbar-brand block" href="/en/">
-            <img
-              decoding="async"
-              className="img logo-light"
-              width="160"
-              height="32"
-              src="https://www.codequoi.com/images/logo_hufcc91df488df48405f1d6e41c5385e5b_3110_320x0_resize_q80_h2_lanczos_2.webp"
-              alt="ProjectsLand"
-            />
+          <a
+            className="navbar-brand block text-xl text-white font-bold"
+            href="/en/"
+          >
+            ProjectsLand
           </a>
         </div>
         <div className="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
