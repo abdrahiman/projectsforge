@@ -2,18 +2,19 @@
 
 export let Nav = () => {
   return (
-    <header className="header sticky top-0 z-30">
-      <nav className="navbar container">
+    <header className="header top-0 z-30">
+      <nav className="navbar container px-2">
         <ul
           id="nav-menu"
           className="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8"
         ></ul>
-        <div className="order-0">
+        <div className="order-0 flex gap-2 items-center">
+          <img src="/logo.png" className="size-10 rounded-lg"></img>
           <a
-            className="navbar-brand block text-xl text-white font-bold"
-            href="/en/"
+            className="navbar-brand block text-xl max-md:text-base text-white font-bold"
+            href="/"
           >
-            ProjectsLand
+            ProjectForge
           </a>
         </div>
         <div className="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
@@ -25,7 +26,7 @@ export let Nav = () => {
             <i className="fa-solid fa-search"></i>
           </button>
 
-          <select className="mr-5 pl-2 py-1 dark:bg-darkmode-theme-light rounded">
+          <select className="mr-5 pl-2 py-1 dark:bg-darkmode-theme-light rounded max-md:text-xs max-md:mr-2">
             <option id="fr" value="/">
               🇫🇷 Français
             </option>
@@ -43,7 +44,7 @@ export let Nav = () => {
                 <svg
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-100 dark:opacity-0"
                   viewBox="0 0 56 56"
-                  fill="#fff"
+                  fill="#000"
                   height="16"
                   width="16"
                 >
@@ -58,7 +59,7 @@ export let Nav = () => {
                   width="16"
                 >
                   <path
-                    fill="#000"
+                    fill="#fff"
                     fill-rule="evenodd"
                     clip-rule="evenodd"
                     d="M8.2 2.2c1-.4 2 .6 1.6 1.5-1 3-.4 6.4 1.8 8.7a8.4 8.4 0 0 0 8.7 1.8c1-.3 2 .5 1.5 1.5v.1a10.3 10.3 0 0 1-9.4 6.2A10.3 10.3 0 0 1 3.2 6.7c1-2 2.9-3.5 4.9-4.4Z"

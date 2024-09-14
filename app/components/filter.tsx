@@ -25,7 +25,7 @@ export let Filter = ({ domains }: { domains: string[] }) => {
         </div>
       </div> */}
       <h3 className="font-semibold text-lg">Difficulty</h3>
-      <div className="filter bg-[#ddf] rounded-md p-2 flex gap-2 flex-col">
+      <div className="filter bg-[#dedef591] rounded-md p-2 flex gap-2 flex-col">
         <div className="flex gap-2">
           <input
             type="checkbox"
@@ -70,7 +70,7 @@ export let Filter = ({ domains }: { domains: string[] }) => {
         </div>
       </div>
       <h3 className="font-semibold text-lg">Categories</h3>
-      <div className="filter bg-[#ddf] rounded-md p-2 flex gap-2 flex-col">
+      <div className="filter bg-[#dedef591] rounded-md p-2 flex gap-2 flex-col">
         {domains &&
           domains.map((d, i) => (
             <div className="flex gap-2" key={i}>

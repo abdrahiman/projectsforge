@@ -189,13 +189,13 @@ article.markdown p {
 	color: #24292e;
 }
 
-article.markdown article.markdown ul {
+article.markdown ul, .resources ul{
 	list-style: disc !important;
 	padding-left: 1.7rem;
 	margin-top: 0;
 }
 
-article.markdown article.markdown ol {
+article.markdown ol {
 	padding-left: 1.7rem;
 	list-style: decimal !important;
 	margin-top: 0;
@@ -244,17 +244,6 @@ article.markdown code>* {
 	font-size: 1.25rem;
 	line-height: 1.75rem;
 	font-weight: 600;
-	--tw-text-opacity: 1;
-	color: rgb(4 4 4/var(--tw-text-opacity))
-}
-
-.navbar-brand image {
-	max-height: 100%;
-	max-width: 100%
-}
-
-.navbar-nav {
-	text-align: center
 }
 
 .nav-dropdown.active .nav-dropdown-list {

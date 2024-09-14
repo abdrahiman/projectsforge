@@ -10,9 +10,9 @@ export let Challenge = ({ ch }: { ch: IChallenge }) => {
   }, [setSolve]);
 
   return (
-    <div className="prob p-4 flex gap-2 items-start flex-col w-full">
+    <div className="prob py-4 flex gap-2 items-start flex-col w-full">
       <div className="info flex flex-col w-full">
-        <Link href={"/" + ch.id}>
+        <Link href={"/c/" + ch.id}>
           <h3 className="text-xl font-semibold mb-6 capitalize">{ch.name}</h3>
         </Link>
 

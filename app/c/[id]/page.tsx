@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { getChallenge } from "../utils/challenges";
-import { Header } from "../components/header";
+import { getChallenge } from "../../utils/challenges";
+import { Header } from "../../components/header";
 import { marked } from "marked";
 
 export default async function Problem({ params }: { params: { id: string } }) {
@@ -14,8 +14,8 @@ export default async function Problem({ params }: { params: { id: string } }) {
   let htmlText = marked.parse(md || "", { gfm: true });
 
   return (
-    <div className="flex pt-4 w-full justify-between items-start gap-6 max-md:flex-col">
-      <main className="problem flex flex-col relative gap-2 w-full bg-[#ffe] rounded-xl p-2 pt-3 overflow-hidden">
+    <div className="flex pt-4 w-full justify-between items-start gap-6 max-md:flex-col-reverse">
+      <main className="problem flex flex-col relative gap-2 w-full bg-[#ddeddd26] border border-[#f5dcdc59] rounded-xl p-2 pt-3 overflow-hidden">
         <div className="flex gap-1 w-full justify-between items-center pr-4 pb-4 pt-2">
           <Link className="text-md underline" href="/">
             back
@@ -56,9 +56,9 @@ export default async function Problem({ params }: { params: { id: string } }) {
         <h5 className="">
           Domains: <b>{challenge?.domains.join(" , ")}</b>
         </h5>
-        <div className="resources mt-6">
+        <div className="resources mt-6 flex flex-col gap-3">
           <h4 className="font-bold text-xl">📙 Resources</h4>
-          <ul className="max-w-full overflow-hidden mt-2">
+          <ul className="max-w-full overflow-hidden">
             {challenge?.resources?.map((r: string, i: number) => (
               <li key={i}>
                 <a href={r}>{r.slice(0, 25) + "..."}</a>
