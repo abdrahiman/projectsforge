@@ -6,7 +6,7 @@ import { getSolved, setSolved } from "../utils/challenges";
 export let Header = ({ challenge, params }: any) => {
   let [solved, setSolve] = useState(false);
   useEffect(() => {
-    setSolve(getSolved().includes(params.id));
+    setSolve(getSolved()?.includes(params.id)||[]);
   }, [setSolve]);
 
   return (

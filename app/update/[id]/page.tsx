@@ -1,70 +1,58 @@
-import { editeChallenge, getChallenge } from "../../utils/challenges";
+"use client";
+import { useEffect, useState } from "react";
+import { editeChallenge, getChallenge, getDomains, IChallenge } from "../../utils/challenges";
+import { updateChallenge } from "@/app/utils/actions/update";
+import { useFormState, useFormStatus } from "react-dom";
 
-export default async function Update({ params }: { params: { id: string } }) {
-  let ch = await getChallenge(params.id);
-  if (!ch || !ch.name) {
+export default function Update({ params }: { params: { id: string } }) {
+  const updateChallengeWithId = updateChallenge.bind(null,params.id);
+  const [state, formAction] = useFormState(updateChallengeWithId, {message:""});
+  const {pending} = useFormStatus();
+
+  let [ch, setCh] = useState<IChallenge|null|false>(false);
+  let [urls, setUrls] = useState<string[]>([]);
+  let [topics, setTops] = useState<string[]>([]);
+  let [stopics, setSTops] = useState<string[]>([]);
+  
+  useEffect(() => {
+    let f = async () => {
+      let tops = await getDomains();
+      let chell = await getChallenge(params.id) as IChallenge;
+      setTops([...tops]);
+      setCh({...chell})
+      setUrls(chell.resources)
+      setSTops(chell.domains)
+    };
+    f();
+  }, []);
+  
+  if (ch==false) {
+    return <h1>Loading Challenge...</h1>;
+  }
+  else if (!ch || !ch.name) {
     return <h1>This Challenge Not Found</h1>;
   }
 
-  let updateChallenge = async (formData: FormData) => {
-    "use server";
-    let name = formData.get("name") as string;
-    let preview = formData.get("preview") as string;
-    let github_markdown_file = formData.get("github_markdown_file") as string;
-    let github_markdown_name = formData.get("github_markdown_name") as string;
-    let author_username = formData.get("author_username") as string;
-    let difficulty = formData.get("difficulty") as string;
-    let resources = formData.get("resources") as string;
-    let domains = formData.get("domains") as string;
-    let difficulties = ["easy", "medium", "hard"];
-    if (
-      !name ||
-      !preview ||
-      !github_markdown_file ||
-      !github_markdown_name ||
-      !author_username ||
-      !difficulties.includes(difficulty.toLowerCase()) ||
-      resources?.split(",").length == 0 ||
-      domains?.split(",").length == 0
-    ) {
-      console.log("Missing required fields");
-      return {
-        status: 400,
-        error: "Missing required fields",
-      };
-    }
-
-    let data = {
-      name,
-      preview,
-      github_markdown_file,
-      github_markdown_name,
-      difficulty,
-      author_username,
-      resources: resources.split(",").map((d) => d.trim()),
-      domains: domains.split(",").map((d) => d.trim().toLowerCase()),
-    };
-
-    let id = await editeChallenge(params.id, data);
-    return { challenge: id };
-  };
-
   return (
     <div className="flex pt-4 w-full justify-between items-start gap-6 max-md:flex-col">
-      <form className="flex flex-col gap-4 mx-auto" action={updateChallenge}>
-        <div className="flex flex-col gap-2">
+      <form
+        className="flex flex-col gap-4 mx-auto w-full max-w-2xl" action={formAction}>
+      <div className="flex flex-col gap-2">
+        {state?.message && (
+          <span className="bg-red-200 rounded-md w-full py-2 px-3 text-red-900">
+            <p aria-live="polite">{state.message}</p>
+          </span>
+        )}
           <label>Challenge Name:</label>
-          <input type="text" name="name" defaultValue={ch?.name} />
+          <input type="text" name="name" defaultValue={ch?.name} required className="pl-2" />
         </div>
         <div className="flex flex-col gap-2">
           <label>Challenge Description:</label>
-          <textarea name="preview" defaultValue={ch?.preview} />
+          <textarea name="preview" className="pl-2 w-full" defaultValue={ch?.preview} />
         </div>
         <div className="flex flex-col gap-2">
           <label>Github UserName:</label>
-          <input
-            type="text"
-            name="author_username"
+         <input type="text" name="author_username" required className="pl-2"
             defaultValue={ch?.author_username}
           />
         </div>
@@ -73,34 +61,85 @@ export default async function Update({ params }: { params: { id: string } }) {
           <input
             type="text"
             name="github_markdown_file"
+            required
+               className="pl-2"
             defaultValue={ch?.github_markdown_file}
           />
         </div>
         <div className="flex flex-col gap-2">
           <label>Markdown Github File Name:</label>
-          <input
-            type="text"
+          <input type="text"
             name="github_markdown_name"
+            required
+            className="pl-2"
             defaultValue={ch?.github_markdown_file}
           />
         </div>
         <div>
           <label>Resources:</label>
-          <textarea name="resources" defaultValue={ch?.resources?.join(",")} />
-        </div>
-        <div>
-          <label>Domains:</label>
           <input
             type="text"
-            name="domains"
-            defaultValue={ch?.domains?.join(",")}
+            name="resources"
+            required
+            className="hidden"
+            value={urls.join(",")}
+          />
+          <ul>
+            {urls && urls.map((u) => (
+              <li key={u} onClick={() => setUrls([...urls.filter((e) => e != u)])}>
+                {u}
+              </li>
+            ))}
+          </ul>
+          <input
+            name="resources"
+            type="url"
+            className="pl-2 w-full"
+            onKeyDown={(e) =>
+              e.key == "Enter" &&
+              !urls.includes((e.target as any).value) &&
+              setUrls([...urls, (e.target as any).value])
+            }
           />
         </div>
         <div>
-          <label>Difficulty:</label>
-          <input type="text" name="difficulty" defaultValue={ch?.difficulty} />
+          <label>Domains:</label>
+          <ul>
+            {topics && topics.map((t) => (
+              <li key={t}>
+                <input
+                  type="checkbox"
+                  checked={stopics.includes(t)}
+                  onChange={() =>
+                    stopics.includes(t)
+                      ? setSTops([...stopics.filter((e) => e != t)])
+                      : setSTops([...stopics, t])
+                  }
+                />
+                <label>{t}</label>
+              </li>
+            ))}
+          </ul>
+          <input
+            type="text"
+            name="domains"
+            className="hidden"
+            required
+            value={stopics.join(",")}
+          />
         </div>
-        <button className="bg-green-600 text-white w-full mt-4 py-4 px-2 rounded-md">
+        <input type="text" className="hidden w-0 h-0" name="id" value={params.id}/>
+        <div>
+          <label>Difficulty:</label>
+          <select name="difficulty" defaultValue={ch?.difficulty} className="border-[#ddd]">
+            <option value="easy">
+              Easy
+            </option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+        <button disabled={pending} className="bg-green-600 text-white w-full mt-4 py-4 px-2 rounded-md">
           Update
         </button>
       </form>

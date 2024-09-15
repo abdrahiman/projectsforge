@@ -2,11 +2,17 @@
 import { useEffect, useState } from "react";
 import { makeChallenge } from "../utils/actions/create";
 import { getDomains } from "../utils/challenges";
+import { useFormState } from "react-dom";
+import { useFormStatus } from "react-dom";
 
 export default function Create() {
+  const [state, formAction] = useFormState(makeChallenge, {message:""});
+  const {pending} = useFormStatus();
+
   let [urls, setUrls] = useState<string[]>([]);
   let [topics, setTops] = useState<string[]>([]);
   let [stopics, setSTops] = useState<string[]>([]);
+
   useEffect(() => {
     let f = async () => {
       let tops = await getDomains();
@@ -18,8 +24,13 @@ export default function Create() {
     <div className="flex pt-4 w-full justify-between items-start gap-6 max-md:flex-col">
       <form
         className="flex flex-col gap-4 mx-auto w-full max-w-2xl"
-        action={makeChallenge}
+        action={formAction}
       >
+          {state?.message && (
+          <span className="bg-red-200 rounded-md w-full py-2 px-3 text-red-900">
+            <p aria-live="polite">{`${state.message}`}</p>
+          </span>
+        )}
         <div className="flex flex-col gap-2">
           <label>Challenge Name:</label>
           <input type="text" name="name" required className="pl-2" />
@@ -61,7 +72,7 @@ export default function Create() {
           />
           <ul>
             {urls.map((u) => (
-              <li onClick={() => setUrls([...urls.filter((e) => e != u)])}>
+              <li key={u} onClick={() => setUrls([...urls.filter((e) => e != u)])}>
                 {u}
               </li>
             ))}
@@ -81,7 +92,7 @@ export default function Create() {
           <label>Domains:</label>
           <ul>
             {topics.map((t) => (
-              <li>
+              <li key={t}>
                 <input
                   type="checkbox"
                   checked={stopics.includes(t)}
@@ -113,7 +124,7 @@ export default function Create() {
             <option value="hard">Hard</option>
           </select>
         </div>
-        <button className="bg-green-600 text-white w-full mt-4 py-4 px-2 rounded-md">
+        <button disabled={pending} className="bg-green-600 text-white w-full mt-4 py-4 px-2 rounded-md">
           Create
         </button>
       </form>
