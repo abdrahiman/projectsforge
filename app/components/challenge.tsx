@@ -1,12 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { getSolved, IChallenge } from "../utils/challenges";
+// import { getSolved, IChallenge } from "../utils/challenges";
 
 export let Challenge = ({ ch }: { ch: IChallenge }) => {
   let [solved, setSolve] = useState(false);
   useEffect(() => {
-    setSolve(getSolved().includes(ch.id));
+
+    // setSolve(getSolved()?.includes(ch.id));
   }, [setSolve]);
 
   return (
