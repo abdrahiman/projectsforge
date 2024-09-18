@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { makeChallenge } from "../utils/actions/create";
-import { getDomains } from "../utils/challenges";
+import { makeChallenge } from "../actions/create";
+import { getDomains } from "../../utils/challenges";
 import { useFormState } from "react-dom";
 import { useFormStatus } from "react-dom";
 

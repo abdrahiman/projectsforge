@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 // import { getSolved, IChallenge } from "../utils/challenges";
+import { IChallenge } from "@/utils/challenges";
 
 export let Challenge = ({ ch }: { ch: IChallenge }) => {
   let [solved, setSolve] = useState(false);

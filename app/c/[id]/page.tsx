@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getChallenge } from "../../utils/challenges";
+import { getChallenge } from "@/utils/challenges";
 import { Header } from "../../components/header";
 import { marked } from "marked";
 

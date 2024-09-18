@@ -1,6 +1,6 @@
 "use server";
 import { redirect } from "next/navigation";
-import { editeChallenge } from "../challenges";
+import { editeChallenge } from "@/utils/challenges";
 
 export let updateChallenge = async (id:string,prevState: any,formData: FormData) => {
   "use server";

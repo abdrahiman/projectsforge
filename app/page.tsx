@@ -1,4 +1,4 @@
-import { getChallenges, getDomains } from "./utils/challenges";
+import { getChallenges, getDomains } from "../utils/challenges";
 import { Challenge } from "./components/challenge";
 import { Filter } from "./components/filter";
 

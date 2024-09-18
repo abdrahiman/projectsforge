@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { editeChallenge, getChallenge, getDomains, IChallenge } from "../../utils/challenges";
-import { updateChallenge } from "@/app/utils/actions/update";
+import {getChallenge, getDomains, IChallenge } from "@/utils/challenges";
+import { updateChallenge } from "@/app/actions/update";
 import { useFormState, useFormStatus } from "react-dom";
 
 export default function Update({ params }: { params: { id: string } }) {

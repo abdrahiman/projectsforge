@@ -1,7 +1,6 @@
 "use client";
-
 import { useState, useEffect } from "react";
-import { getSolved, setSolved } from "../utils/challenges";
+import { getSolved, setSolved } from "../../utils/challenges";
 
 export let Header = ({ challenge, params }: any) => {
   let [solved, setSolve] = useState(false);

@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { createChallenge } from "../challenges";
+import { createChallenge } from "@/utils/challenges";
 import { z } from 'zod'
 
  

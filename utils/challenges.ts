@@ -9,7 +9,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import db from "./firebase";
+import {db} from "./firebase";
 
 export let getChallenges = async (filters: any) => {
   let q = query(collection(db, "challenges"));
