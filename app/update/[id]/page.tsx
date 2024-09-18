@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {getChallenge, getDomains, IChallenge } from "@/utils/challenges";
 import { updateChallenge } from "@/app/actions/update";
 import { useFormState, useFormStatus } from "react-dom";
+import deleteChallenge from "@/app/actions/delete";
 
 export default function Update({ params }: { params: { id: string } }) {
   const updateChallengeWithId = updateChallenge.bind(null,params.id);
@@ -35,6 +36,7 @@ export default function Update({ params }: { params: { id: string } }) {
 
   return (
     <div className="flex pt-4 w-full justify-between items-start gap-6 max-md:flex-col">
+
       <form
         className="flex flex-col gap-4 mx-auto w-full max-w-2xl" action={formAction}>
       <div className="flex flex-col gap-2">
@@ -143,6 +145,9 @@ export default function Update({ params }: { params: { id: string } }) {
           Update
         </button>
       </form>
+        <button onClick={()=>deleteChallenge(params.id)} className="bg-red-600 text-white w-full mt-4 py-4 px-2 rounded-md">
+          Delete Challenge
+        </button>
     </div>
   );
 }

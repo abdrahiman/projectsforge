@@ -1,12 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getSolved, setSolved } from "../../utils/challenges";
+// import { getSolved, setSolved } from "../../utils/challenges";
 
 export let Header = ({ challenge, params }: any) => {
   let [solved, setSolve] = useState(false);
-  useEffect(() => {
-    setSolve(getSolved()?.includes(params.id)||[]);
-  }, [setSolve]);
+  // useEffect(() => {
+  //   setSolve(getSolved()?.includes(params.id)||[]);
+  // }, [setSolve]);
 
   return (
     <header className="flex gap-2 w-full justify-start items-center pr-4">
@@ -19,7 +19,7 @@ export let Header = ({ challenge, params }: any) => {
         checked={solved}
         className="w-7 h-7"
         onChange={() => {
-          setSolved(params.id);
+          // setSolved(params.id);
           setSolve(!solved);
         }}
       />

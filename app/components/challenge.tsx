@@ -7,7 +7,6 @@ import { IChallenge } from "@/utils/challenges";
 export let Challenge = ({ ch }: { ch: IChallenge }) => {
   let [solved, setSolve] = useState(false);
   useEffect(() => {
-
     // setSolve(getSolved()?.includes(ch.id));
   }, [setSolve]);
 
@@ -21,7 +20,7 @@ export let Challenge = ({ ch }: { ch: IChallenge }) => {
         <p className="text-base text-gray-900">{ch.preview}</p>
       </div>
       <div className="actions flex gap-2 mt-4 text-sm min-w-fit">
-        <Link href={"/" + ch.id}>
+        <Link href={"/c/" + ch.id}>
           <button
             className={`rounded-xl p-2 min-w-fit text-sm ${solved ? "bg-black text-white" : "border-2 border-black text-black"}`}
           >

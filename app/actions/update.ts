@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { editeChallenge } from "@/utils/challenges";
 
 export let updateChallenge = async (id:string,prevState: any,formData: FormData) => {
-  "use server";
+
     let name = formData.get("name") as string;
     let preview = formData.get("preview") as string;
     let github_markdown_file = formData.get("github_markdown_file") as string;
